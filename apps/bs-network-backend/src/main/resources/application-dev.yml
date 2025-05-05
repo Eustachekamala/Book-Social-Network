@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/bsNetworkDB
-    username: username
-    password: password
+    url: jdbc:postgresql://localhost:5432/book_service_networkDB
+    username: postgres
+    password: 092000The
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -31,9 +31,14 @@ spring:
           timeout: 3000
           writetimeout: 5000
 
-  application:
-    security:
-      jwt:
-        secret-key: fb55ace068b5bb9fe3c0afb97e22c2ed822068da9f869b776b550f1e825593ae
-        expiration: 8640000
+application:
+  security:
+    jwt:
+      secret-key: fb55ace068b5bb9fe3c0afb97e22c2ed822068da9f869b776b550f1e825593ae
+      expiration: 8640000
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
 
+server:
+  port: 8088
