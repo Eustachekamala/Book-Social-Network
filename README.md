@@ -47,21 +47,21 @@
    ```bash
    git clone https://github.com/Eustachekamala/BookSocialNetwork.git
    cd BookSocialNetwork
-2. **Install dependencies**
+2. **Install dependencies:**
     ```bash
     npm install
 
 ### 🧪 Development
 
-#### 💻 Run the Frontend: 
+1. **💻 Run the Frontend:** 
     ```bash
     npx nx serve bs-network-frontend
 
-#### ⚙️ Run the Backend:
+2. **⚙️ Run the Backend:**
     ```bash
     npx nx serve bs-network-backend
 
-### 🏗️ Build the frontend:
+3. **🏗️ Build the frontend:**
     ```bash
     npx nx build bs-network-frontend
 
