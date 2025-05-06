@@ -1,0 +1,62 @@
+<form
+  class="flex flex-col items-center justify-center min-h-screen bg-base-200"
+  (ngSubmit)="login()"
+  #loginForm="ngForm"
+>
+  <div class="card w-full max-w-md shadow-lg bg-base-100">
+    <div class="card-body">
+      <h1 class="text-2xl font-bold text-center">Login</h1>
+
+      <!-- Error Messages -->
+      <div class="alert alert-error flex flex-col items-start" *ngIf="errorMsg.length > 0">
+        <p *ngFor="let msg of errorMsg" class="alert-message">{{ msg }}</p>
+      </div>
+
+      <!-- Email Input -->
+      <div class="form-control mb-4">
+        <label for="login" class="label">
+          <span class="label-text">Email address</span>
+        </label>
+        <input
+          [(ngModel)]="authRequest.email"
+          name="email"
+          type="email"
+          id="login"
+          placeholder="name@example.com"
+          class="input input-bordered"
+          required
+        />
+      </div>
+
+      <!-- Password Input -->
+      <div class="form-control flex flex-col mb-4">
+        <label for="password" class="label">
+          <span class="label-text">Password</span>
+        </label>
+        <input
+          [(ngModel)]="authRequest.password"
+          name="password"
+          type="password"
+          id="password"
+          placeholder="password"
+          class="input input-bordered"
+          required
+          minlength="8"
+        />
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-between items-center">
+        <button type="submit" class="btn btn-primary">
+          <em class="fas fa-sign-in-alt"></em>&nbsp;Sign in
+        </button>
+        <div>
+          <span>Don't have an account?&nbsp;</span>
+          <button (click)="register()" type="button" class="btn btn-link">
+            <em class="fas fa-user-plus"></em>&nbsp;Register
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
