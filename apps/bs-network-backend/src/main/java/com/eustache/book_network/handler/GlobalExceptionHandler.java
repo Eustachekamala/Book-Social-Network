@@ -1,5 +1,7 @@
 package com.eustache.book_network.handler;
 
+import com.eustache.book_network.exception.ActivationTokenException;
+import com.eustache.book_network.exception.OperationNotPermittedException;
 import jakarta.mail.MessagingException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -80,6 +82,28 @@ public class GlobalExceptionHandler {
       .body(
         ExceptionResponse.builder()
           .validationErrors(errors)
+          .build()
+      );
+  }
+
+  @ExceptionHandler(ActivationTokenException.class)
+  public ResponseEntity<ExceptionResponse> handleException(ActivationTokenException exp) {
+    return ResponseEntity
+      .status(BAD_REQUEST)
+      .body(
+        ExceptionResponse.builder()
+          .error(exp.getMessage())
+          .build()
+      );
+  }
+
+  @ExceptionHandler(OperationNotPermittedException.class)
+  public ResponseEntity<ExceptionResponse> handleException(OperationNotPermittedException exp) {
+    return ResponseEntity
+      .status(BAD_REQUEST)
+      .body(
+        ExceptionResponse.builder()
+          .error(exp.getMessage())
           .build()
       );
   }
