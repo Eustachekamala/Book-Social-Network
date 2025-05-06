@@ -4,6 +4,7 @@ import {AuthenticationRequest} from "../../services/models/authentication-reques
 import {FormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthentificationService} from "../../services/services/authentification.service";
+import {TokenService} from "../../services/services/token/token.service";
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthentificationService,
+    private tokenService: TokenService
   ) {
   }
   protected readonly FormsModule = FormsModule;
@@ -24,12 +26,37 @@ export class LoginComponent {
   login() {
     this.errorMsg = [];
 
-    this.authService.authenticate({ body: this.authRequest }).subscribe({
-      next: (res) => {
-        this.router.navigateByUrl('books');
+    this.authService.authenticate({
+        body: this.authRequest
+      }).subscribe({
+          next: (res) => {
+        // Check if the response is a Blob
+        if (res instanceof Blob) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const responseText = reader.result as string;
+            try {
+              const jsonResponse = JSON.parse(responseText);
+              if (jsonResponse.token) {
+                this.tokenService.token = jsonResponse.token; // Store the token
+                this.router.navigate(['books']);
+              } else {
+                console.error('Token not found in parsed response');
+                this.errorMsg = ['Login failed: Token not found'];
+              }
+            } catch (e) {
+              console.error('Error parsing Blob response:', e);
+              this.errorMsg = ['Login failed: Invalid response format'];
+            }
+          };
+          reader.readAsText(res); // Read Blob as text
+        } else {
+          console.error('Unexpected response format');
+          this.errorMsg = ['Unexpected response format'];
+        }
       },
-      error: async (err) => {
-        // If error is a blob (meaning Angular didn't parse it)
+      error: (err) => {
+        // Handle the error case (already implemented)
         if (err.error instanceof Blob) {
           const reader = new FileReader();
           reader.onload = () => {
@@ -47,7 +74,7 @@ export class LoginComponent {
           };
           reader.readAsText(err.error);
         } else {
-          // Normal path
+          // Handle other error types
           if (err.error?.validationErrors) {
             this.errorMsg = [...err.error.validationErrors];
           } else if (err.error?.error) {
@@ -59,6 +86,7 @@ export class LoginComponent {
       }
     });
   }
+
 
   register() {
     this.router.navigate(['register']);
