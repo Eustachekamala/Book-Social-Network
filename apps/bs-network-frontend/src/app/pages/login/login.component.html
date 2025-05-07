@@ -1,62 +1,62 @@
-<form
-  class="container flex items-center justify-center min-h-screen bg-gray-100"
-  (ngSubmit)="login()"
-  #loginForm="ngForm"
->
-  <div class="card w-full max-w-md shadow-lg rounded-lg p-6 bg-white">
-    <div class="card-body">
-      <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h1>
+<!--<form-->
+<!--  class="container flex items-center justify-center min-h-screen bg-gray-100"-->
+<!--  (ngSubmit)="login()"-->
+<!--  #loginForm="ngForm"-->
+<!--&gt;-->
+<!--  <div class="card w-full max-w-md shadow-lg rounded-lg p-6 bg-white">-->
+<!--    <div class="card-body">-->
+<!--      <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h1>-->
 
-      <!-- Error Messages -->
-      <div class="alert alert-error flex flex-col items-start mb-4" *ngIf="errorMsg.length > 0">
-        <p *ngFor="let msg of errorMsg" class="alert-message text-red-600">{{ msg }}</p>
-      </div>
+<!--      &lt;!&ndash; Error Messages &ndash;&gt;-->
+<!--      <div class="alert alert-error flex flex-col items-start mb-4" *ngIf="errorMsg.length > 0">-->
+<!--        <p *ngFor="let msg of errorMsg" class="alert-message text-red-600">{{ msg }}</p>-->
+<!--      </div>-->
 
-      <!-- Email Input -->
-      <div class="form-control mb-4">
-        <label for="login" class="label">
-          <span class="label-text font-semibold text-gray-700">Email address</span>
-        </label>
-        <input
-          [(ngModel)]="authRequest.email"
-          name="email"
-          type="email"
-          id="login"
-          placeholder="name@example.com"
-          class="input input-bordered placeholder:opacity-50 w-full bg-transparent text-black border border-b-gray-500"
-          required
-        />
-      </div>
+<!--      &lt;!&ndash; Email Input &ndash;&gt;-->
+<!--      <div class="form-control mb-4">-->
+<!--        <label for="login" class="label">-->
+<!--          <span class="label-text font-semibold text-gray-700">Email address</span>-->
+<!--        </label>-->
+<!--        <input-->
+<!--          [(ngModel)]="authRequest.email"-->
+<!--          name="email"-->
+<!--          type="email"-->
+<!--          id="login"-->
+<!--          placeholder="name@example.com"-->
+<!--          class="input input-bordered placeholder:opacity-50 w-full bg-transparent text-black border border-b-gray-500"-->
+<!--          required-->
+<!--        />-->
+<!--      </div>-->
 
-      <!-- Password Input -->
-      <div class="form-control mb-6">
-        <label for="password" class="label">
-          <span class="label-text font-semibold text-gray-700">Password</span>
-        </label>
-        <input
-          [(ngModel)]="authRequest.password"
-          name="password"
-          type="password"
-          id="password"
-          placeholder="password"
-          class="input input-bordered placeholder:opacity-50 w-full bg-transparent text-black border border-b-gray-500"
-          required
-          minlength="8"
-        />
-      </div>
+<!--      &lt;!&ndash; Password Input &ndash;&gt;-->
+<!--      <div class="form-control mb-6">-->
+<!--        <label for="password" class="label">-->
+<!--          <span class="label-text font-semibold text-gray-700">Password</span>-->
+<!--        </label>-->
+<!--        <input-->
+<!--          [(ngModel)]="authRequest.password"-->
+<!--          name="password"-->
+<!--          type="password"-->
+<!--          id="password"-->
+<!--          placeholder="password"-->
+<!--          class="input input-bordered placeholder:opacity-50 w-full bg-transparent text-black border border-b-gray-500"-->
+<!--          required-->
+<!--          minlength="8"-->
+<!--        />-->
+<!--      </div>-->
 
-      <!-- Buttons -->
-      <div class="flex flex-col gap-4">
-        <button type="submit" class="btn btn-primary w-full">
-          <em class="fas fa-sign-in-alt"></em>&nbsp;Sign in
-        </button>
-        <div>
-          <span class="text-gray-600">Don't have an account?&nbsp;</span>
-          <button (click)="register()" type="button" class="btn btn-link text-blue-600">
-            <em class="fas fa-user-plus"></em>&nbsp;Register
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
+<!--      &lt;!&ndash; Buttons &ndash;&gt;-->
+<!--      <div class="flex flex-col gap-4">-->
+<!--        <button type="submit" class="btn btn-primary w-full">-->
+<!--          <em class="fas fa-sign-in-alt"></em>&nbsp;Sign in-->
+<!--        </button>-->
+<!--        <div>-->
+<!--          <span class="text-gray-600">Don't have an account?&nbsp;</span>-->
+<!--          <button (click)="register()" type="button" class="btn btn-link text-blue-600">-->
+<!--            <em class="fas fa-user-plus"></em>&nbsp;Register-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</form>-->

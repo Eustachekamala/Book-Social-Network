@@ -1,0 +1,35 @@
+<nav class="navbar bg-base-100 shadow-md">
+  <div class="container mx-auto flex items-center justify-between">
+    <a class="text-xl font-bold" href="javascript:void(0)">BSN</a>
+    <div class="flex lg:hidden">
+      <button class="btn btn-square btn-ghost" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div class="hidden lg:flex flex-grow items-center">
+      <ul class="menu menu-horizontal px-4">
+        <li><a class="nav-link" routerLink="/books"><i class="fas fa-home-alt"></i>&nbsp;Home</a></li>
+        <li><a class="nav-link" routerLink="my-books"><i class="fas fa-book"></i>&nbsp;My books</a></li>
+        <li><a class="nav-link" routerLink="my-waiting-list"><i class="fas fa-heart"></i>&nbsp;My waiting list</a></li>
+        <li><a class="nav-link" routerLink="my-returned-books"><i class="fa-solid fa-truck-fast"></i>&nbsp;My returned books</a></li>
+        <li><a class="nav-link" routerLink="my-borrowed-books"><i class="fas fa-list-check"></i>&nbsp;Borrowed books</a></li>
+      </ul>
+      <form class="flex items-center gap-2">
+        <input
+          type="search"
+          placeholder="Find a book"
+          class="input input-bordered w-full max-w-xs"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline btn-success" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+        <span>Welcome</span>
+        <span class="font-bold capitalize">alibou</span>
+        <button class="btn btn-link text-error" type="button" (click)="logout()">
+          <i class="fas fa-door-open"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>

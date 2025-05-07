@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import {APP_INITIALIZER, ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
 import {
@@ -6,6 +6,11 @@ import {
   withEventReplay,
 } from '@angular/platform-browser';
 import {provideHttpClient, withFetch} from "@angular/common/http";
+import {KeycloakService} from "./services/services/keycloak/keycloak.service";
+
+export function kcFactory(kcService: KeycloakService){
+  return () => kcService.init();
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,5 +18,11 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
     provideHttpClient(withFetch()),
+    {
+      provide: APP_INITIALIZER,
+      deps: [KeycloakService],
+      useFactory: kcFactory,
+      multi: true,
+    }
   ],
 };
