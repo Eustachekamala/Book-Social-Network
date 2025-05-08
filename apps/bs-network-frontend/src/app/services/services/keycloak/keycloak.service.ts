@@ -18,7 +18,7 @@ export class KeycloakService {
       this._keycloak = new Keycloak({
         url: 'http://localhost:9090',
         realm: 'bs-network',
-        clientId: 'b-service-network',
+        clientId: 'b-social-network',
       });
     }
     return this._keycloak;
@@ -29,12 +29,6 @@ export class KeycloakService {
   }
 
   async init() {
-    if (!isPlatformBrowser(this.platformId)) {
-      // Avoid initializing Keycloak on the server
-      console.warn('Keycloak init skipped: not in browser');
-      return;
-    }
-
     console.log('Authenticating the user...');
     const authenticated = await this.keycloak?.init({
       onLoad: 'login-required',

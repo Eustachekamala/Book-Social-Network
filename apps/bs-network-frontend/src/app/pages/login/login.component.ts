@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AuthenticationRequest} from "../../services/models/authentication-request";
+//import {AuthenticationRequest} from "../../services/models/authentication-request";
 import {FormsModule} from "@angular/forms";
 import {KeycloakService} from "../../services/services/keycloak/keycloak.service";
 
