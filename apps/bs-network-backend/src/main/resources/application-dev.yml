@@ -31,18 +31,16 @@ spring:
           timeout: 3000
           writetimeout: 5000
 
-application:
-  security:
-    jwt:
-      secret-key: fb55ace068b5bb9fe3c0afb97e22c2ed822068da9f869b776b550f1e825593ae
-      expiration: 8640000
-  mailing:
-    frontend:
-      activation-url: http://localhost:4200/activate-account
   application:
     file:
       uploads:
         photos-output-path: ./uploads
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9090/realms/b-social-network"
 
 server:
   port: 8088

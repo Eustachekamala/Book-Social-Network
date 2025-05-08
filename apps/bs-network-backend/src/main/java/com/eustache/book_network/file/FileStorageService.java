@@ -20,7 +20,7 @@ import static java.lang.System.currentTimeMillis;
 @Slf4j
 @RequiredArgsConstructor
 public class FileStorageService {
-  @Value("${application.application.file.uploads.photos-output-path}")
+  @Value("${spring.application.file.uploads.photos-output-path}")
   private String fileUploadPath;
 
   public String saveFile(
